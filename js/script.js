@@ -22,6 +22,8 @@ function isInArray (element, array) {
     return false; 
 }
 
+// -----------/FUNCTIONS------------
+
 // Generare numeri random 
 var numeriAlert = []; 
 
@@ -38,7 +40,42 @@ console.log(numeriAlert);
 alert("Ecco i numeri da ricordare!\n" + numeriAlert + "\nATTENZIONE!\nHai solo 30 secondi per memorizzarli!"); 
 
 // timer 30 secondi
+var timer = 2; 
+var arrayNumeriUtente = [];
 
-// prompt nel quale l'utente iserisce i 5 numeri
+var punteggio = 0;  
 
-// confronto numeri pronpt e quelli casuali
+var countDown = setInterval(function() {
+    document.getElementById("timer").innerHTML = "<p>Mancano " + timer + " secondi</p>";
+
+    if (timer == -1) {
+        for ( i = 0; i < 5; i++) {
+            // Quando il timer arriva a 0 appare il prompt PER 5 VOLTE nel quale l'utente deve mettere il numero
+            clearInterval(countDown); 
+            var numeriUtente = parseInt(prompt("Inserisci un numero")); 
+
+            // confronto numeri prompt e quelli casuali
+            if (isInArray(numeriUtente, numeriAlert)) {
+
+                arrayNumeriUtente.push(numeriUtente); 
+
+                punteggio ++; 
+                
+            }
+        
+        }
+        // alert( "I numeri casuali erano: " + numeriAlert + "\nI numeri che hai inserito sono: " + arrayNumeriUtente + "\nIl tuo punteggio è di: " + punteggio + " punti"); 
+
+        document.getElementById("numeri_alert").innerHTML = "I numeri da ricordare erano: " + numeriAlert; 
+        document.getElementById("numeri_utente").innerHTML = "I numeri che hai inserito sono: " + arrayNumeriUtente;
+        document.getElementById("punteggio").innerHTML = "Il tuo punteggio finale è: " + punteggio;
+
+    } 
+    
+    
+    timer--; 
+    
+
+}, 1000); 
+
+
