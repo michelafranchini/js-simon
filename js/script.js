@@ -40,7 +40,7 @@ console.log(numeriAlert);
 alert("Ecco i numeri da ricordare!\n" + numeriAlert + "\nATTENZIONE!\nHai solo 30 secondi per memorizzarli!"); 
 
 // timer 30 secondi
-var timer = 2; 
+var timer = 30; 
 var arrayNumeriUtente = [];
 
 var punteggio = 0;  
